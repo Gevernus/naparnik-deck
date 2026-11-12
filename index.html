@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ИИ-компаньон для SteamBooster · конкуренты и экономика</title>
+<style>
+@font-face{font-family:Unbounded;src:url(f/unbounded.ttf) format("truetype");font-weight:200 900}
+@font-face{font-family:Onest;src:url(f/onest.ttf) format("truetype");font-weight:100 900}
+:root{--c-ink:#22191b;--c-plum:#4f3f44;--c-crim:#7c2636;--c-hot:#db7997;--c-rose:#f3b1c2;--c-cream:#f9edee;--c-skin:#efd0d1;--c-blue:#7c9ac8;--c-lil:#c0a3de;--c-gold:#dcbf93;
+--bg:var(--c-ink);--line:var(--c-plum);--ink:var(--c-cream);--ink2:var(--c-skin);--mute:var(--c-skin);--pink:var(--c-rose);--num:Onest,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--c-ink)}
+body{background:var(--c-ink);font:17px/1.32 Onest,-apple-system,sans-serif;color:var(--c-cream);-webkit-font-smoothing:antialiased}
+#pan{position:fixed;right:0;top:0;bottom:0;width:20vw;background:var(--c-blue);overflow:hidden;z-index:0}
+#num{position:absolute;left:.7vw;top:-.6vw;font:900 11.2vw/1 Unbounded,sans-serif;letter-spacing:-.06em;color:var(--c-ink)}
+#pt{position:absolute;left:1.2vw;right:1.2vw;bottom:2vw;font:700 1.55vw/1.12 Unbounded,sans-serif;letter-spacing:-.03em;color:var(--c-ink)}
+#stage{position:relative;z-index:1;width:1280px;padding-bottom:72px}
+.s{position:relative;padding:84px 48px 0}
+.k{font:700 14px/1 Onest,sans-serif;letter-spacing:.02em;text-transform:lowercase;color:var(--c-hot);margin-bottom:14px}
+.k:before{content:"(" attr(data-n) ")  "}
+h2{font:700 41px/1.1 Unbounded,sans-serif;letter-spacing:-.035em;margin:0 0 26px;width:1204px}
+h2 em{font-style:normal;color:var(--c-rose)}
+.w{position:relative;width:1204px;display:grid;gap:0}
+.c{background:var(--c-ink);outline:1.5px solid var(--line);outline-offset:-.75px;padding:20px 22px;min-width:0;position:relative}
+.l{font-size:13.5px;font-weight:700;text-transform:lowercase;color:var(--ink2)}
+.m{font-size:15px;color:var(--mute)}
+.b{font-family:var(--num);font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.t2{color:var(--ink2)}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:3px 9px;color:var(--ink2);border:1.5px solid var(--line);white-space:nowrap}
+.tag.p{background:var(--c-hot);color:var(--c-ink);border-color:var(--c-hot)}
+.src{font-size:13.5px;color:var(--c-skin);width:1204px;margin-top:12px;opacity:.85}
+#bar{position:fixed;left:0;top:0;height:4px;background:var(--c-hot);z-index:5}
+#tip{position:fixed;display:none;background:var(--c-cream);color:var(--c-ink);font-size:14px;font-weight:600;padding:5px 9px;pointer-events:none;z-index:9;white-space:nowrap}
+.hero{font:900 168px/.92 Unbounded,sans-serif;letter-spacing:-.07em;color:var(--c-cream);text-transform:uppercase;margin:0 0 30px -8px}
+.lead{font:700 37px/1.14 Unbounded,sans-serif;letter-spacing:-.035em;width:1204px}
+.lead span{color:var(--c-rose)}
+.mq{width:1204px;overflow:hidden;background:var(--c-hot);color:var(--c-ink);margin-top:34px;padding:13px 0;font:700 21px/1 Unbounded,sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.mq div{display:inline-block;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);width:1204px}
+.kpi .c{padding:24px 22px 26px}.kpi .b{font-size:60px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.n h4,.c h4{font:700 20px/1.15 Unbounded,sans-serif;letter-spacing:-.03em;margin:8px 0 6px}
+.pipe{display:grid;grid-template-columns:repeat(5,1fr)}
+.pipe .c:not(:last-child):after{content:"";position:absolute;right:-11px;top:50%;margin-top:-10px;border-left:13px solid var(--c-hot);border-top:10px solid transparent;border-bottom:10px solid transparent;z-index:3}
+.cost{font:800 30px/1 var(--num);letter-spacing:-.03em;margin-top:12px}
+.lane h3{font:800 54px/1 var(--num);letter-spacing:-.04em;display:flex;align-items:baseline;gap:10px}
+.lane h3 span{font:700 16px/1.2 Onest,sans-serif;letter-spacing:0;color:var(--ink2)}
+.it{padding:15px 0;border-top:1.5px solid var(--line);font-weight:700;font-size:20px;line-height:1.2}
+.it small{display:block;font-weight:500;font-size:16px;color:var(--mute);margin-top:3px}
+.pr{height:8px;margin:12px 0 6px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:16px}
+th{font-size:13px;font-weight:700;text-transform:lowercase;color:var(--ink2);text-align:left;padding:0 10px 9px;vertical-align:bottom}
+td{padding:10px;border-top:1.5px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.28}
+td b{color:var(--ink)}
+td.n1,th.n1{text-align:right;font-family:var(--num);font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);white-space:nowrap}
+th.n1{font-family:inherit;color:var(--ink2);white-space:normal}
+tr.pk td{background:var(--c-rose);color:var(--c-ink);border-top-color:var(--c-rose)}tr.pk td b,tr.pk td.n1{color:var(--c-ink)}
+ul.tight{list-style:none;display:grid;gap:8px;margin-top:10px;font-size:16.5px;color:var(--ink2)}
+ul.tight li{padding-left:16px;position:relative;line-height:1.28}ul.tight li:before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;background:var(--c-hot)}
+ul.tight b{color:var(--ink)}
+.fx{display:grid;grid-template-columns:170px 1fr;align-items:center;gap:14px;border-top:1.5px solid var(--line);padding:12px 0}.fx:first-child{border-top:0}
+.fx b{font:800 38px/1 var(--num);letter-spacing:-.03em;color:var(--pink)}.fx span{font-size:16px;color:var(--mute)}.fx strong{display:block;font-size:19px;color:var(--ink);font-weight:800}
+.lad{display:grid;grid-template-columns:repeat(8,1fr);align-items:end;height:200px}
+.lad div{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;font-size:14px;color:var(--ink2);text-align:center;line-height:1.1;padding:0 4px}
+.lad b{font:800 22px/1 var(--num);color:var(--ink);margin-bottom:4px}
+.lad i{display:block;width:100%;background:var(--c-plum);margin-bottom:6px}.lad .o i{background:var(--c-rose)}.lad span{display:block;height:3.4em}
+.hb{display:grid;grid-template-columns:290px 1fr 90px;gap:10px 12px;align-items:center;font-size:16px}
+.hb .bar{height:26px;background:var(--c-lil)}.hb .v{font:800 20px/1 var(--num);text-align:right;color:var(--ink)}
+.hb .nm b{display:block;color:var(--ink);font-size:16.5px}.hb .nm{color:var(--mute);font-size:14px;line-height:1.2}
+.heat td{border:0;padding:0}.heat .v{display:block;padding:34px 4px;text-align:center;font:800 36px/1 var(--num);letter-spacing:-.03em;outline:1.5px solid var(--c-ink);outline-offset:-.75px;color:var(--c-ink)}
+.heat td.h{color:var(--ink2);font-size:18px;padding-right:12px;line-height:1.2;vertical-align:middle}.heat.sm .v{padding:16px 4px;font-size:28px}.heat.sm td.h{font-size:15px}.heat.sm td.h b{font-size:18px}.heat td.h b{display:block;color:var(--ink);font-size:19px}
+.lg{display:flex;gap:16px;font-size:14px;color:var(--ink2);flex-wrap:wrap;margin-top:12px}.lg i{display:inline-block;width:13px;height:13px;margin-right:6px;vertical-align:-2px}
+.au{display:flex;flex-direction:column;gap:8px}.au .l{color:var(--c-hot)}.au h4{font-size:18px}.au audio{width:100%;height:32px;margin-top:auto}
+.q{font:600 19px/1.3 Onest,sans-serif;color:var(--ink);padding:14px 0;border-top:1.5px solid var(--line)}.q:first-child{border-top:0}.q small{display:block;font-size:14px;color:var(--mute);font-weight:500;margin-top:4px}
+.R{background:var(--c-rose)}.Cr{background:var(--c-cream)}.Li{background:var(--c-lil)}.Go{background:var(--c-gold)}.Bl{background:var(--c-blue)}.Ho{background:var(--c-hot)}
+.R,.Cr,.Li,.Go,.Bl,.Ho{--ink:var(--c-ink);--ink2:var(--c-ink);--mute:var(--c-ink);--pink:var(--c-crim);--line:var(--c-ink);color:var(--c-ink)}
+.R ul.tight li:before,.Cr ul.tight li:before,.Li ul.tight li:before,.Go ul.tight li:before,.Bl ul.tight li:before{background:var(--c-crim)}
+.rv .fx{grid-template-columns:150px 1fr}.rv .fx b{font-size:28px;white-space:nowrap}
+.g3 .fx{grid-template-columns:1fr;gap:8px}
+.kpi .b .u{font-size:22px;margin-left:4px;letter-spacing:0}
+.mxt td.mx,.mxt th.mx{text-align:center;padding:9px 6px}.mxt td{vertical-align:middle}
+.mxt i{font-style:normal;font-weight:800;font-size:26px;display:block;line-height:1}.mxt small{display:block;font-size:12px;color:var(--mute);margin-top:3px;line-height:1.15}
+.mxt .y,.lg .y{color:var(--c-rose)}.mxt .h,.lg .h{color:var(--c-lil)}.mxt .p,.lg .p{color:var(--c-gold)}.mxt .n,.lg .n{color:var(--c-plum)}.mxt .u,.lg .u{color:var(--c-skin);opacity:.6}
+.lg i{font-style:normal;font-weight:800;margin-right:4px}
+.mxt td.me,.mxt th.me{background:var(--c-rose);color:var(--c-ink)}.mxt td.me i,.mxt td.me small{color:var(--c-ink)!important;opacity:1}
+.foot{width:1204px;margin-top:40px;font-size:15px;color:var(--mute)}.foot a{color:var(--c-rose)}
+.kpi .kv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;font-size:15px;line-height:1.35}.kpi .kv small{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.65;margin-bottom:4px}.kpi .kv b{font-weight:700}.kpi .kc{grid-template-columns:auto 1fr}.kpi .kn{margin-top:10px;font-size:13px;opacity:.8}
+.kpi.k3{grid-template-columns:repeat(3,1fr)}.kpm .c{padding:16px 18px 18px}.kpm .kv{font-size:13px;gap:10px;margin-top:8px}.kpm .kv small{font-size:10px}.tabs{display:flex;gap:0;margin-bottom:0}.tabs button{font:700 15px/1 Onest,sans-serif;padding:12px 18px;background:var(--c-ink);color:var(--ink2);border:1.5px solid var(--line);border-bottom:none;cursor:pointer}
+.tabs button.on{background:var(--c-rose);color:var(--c-ink);border-color:var(--c-rose)}.pane{display:none}.pane.on{display:block}
+.apx-btn{font:700 20px/1 Unbounded,sans-serif;padding:18px 26px;background:var(--c-hot);color:var(--c-ink);border:none;cursor:pointer;margin-bottom:24px}
+
+.mg{display:grid;width:1204px;border:1.5px solid var(--c-plum)}
+.mg>div{padding:20px 22px 22px;border-right:1.5px solid var(--c-plum);border-bottom:1.5px solid var(--c-plum)}
+.mg .n{font:800 56px/1 var(--num);letter-spacing:-.03em;white-space:nowrap}
+.mg .n small{font-size:22px;margin-left:4px;letter-spacing:0;font-weight:700}
+.mg .t{font-size:19px;line-height:1.25;margin-top:10px;font-weight:600}
+.mg .R,.mg .Li,.mg .Go{border-color:var(--c-ink)}
+.bt{width:100%;font-size:20px}
+.bt th{font-size:15px;padding:0 12px 10px}
+.bt td{padding:13px 12px;border-top:1.5px solid var(--c-plum);color:var(--c-cream);vertical-align:middle;line-height:1.25}
+.bt td.n1{font-size:24px;color:var(--c-cream)}
+.bt tr.pk td,.bt tr.pk td.n1{background:var(--c-rose);color:var(--c-ink)}
+.bt tr.tot td{border-top:2.5px solid var(--c-cream);font-weight:700}
+.bt td small{display:block;font-size:16px;opacity:.75;font-weight:500}
+.bt-s td{padding:9px 12px}.bt-e td{padding:9px 12px}.bt-s td.n1{font-size:21px}
+.cl{font-size:20px;line-height:1.3;margin-top:16px;width:1204px}
+.cl b{color:var(--c-rose)}
+.vbar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:0 0 10px;padding:10px 14px;border:1px solid var(--c-plum)}.vbar .vt{font-weight:600;color:var(--c-rose)}.vg{display:flex;gap:6px;align-items:center}.vg b{margin-right:4px}.vg i{opacity:.6}.vbar small{opacity:.7}.vp{font:inherit;font-size:14px;padding:3px 10px;border:1px solid var(--c-rose);background:none;color:var(--c-cream);cursor:pointer;border-radius:14px}.vp.on{background:var(--c-rose);color:var(--c-ink)}</style></head><body>
+<div id="pan"><span id="num">01</span><div id="pt"></div></div><div id="bar"></div><div id="tip"></div>
+<div id="stage">
+
+<section id="s1" class="s" data-t="Обложка">
+  <div class="k">SteamBooster × ИИ-компаньон · экономика пилота · 12.11.2026</div>
+  <div class="hero" style="font-size:150px">Напарник</div>
+  <div class="lead">Голосовой питомец в SteamBooster: <span>смотрит экран, говорит по-русски, знает твой Steam</span></div>
+  <div style="height:34px"></div>
+  <div class="mg" style="grid-template-columns:repeat(3,1fr)"><div class="R"><div class="n">499 ₽</div><div class="t">база в месяц: 10 ч разговора, экран до 30 ч</div></div><div class="Li"><div class="n">1 490 ₽</div><div class="t">Про в месяц: свой голос, 20 ч разговора, экран до 60 ч</div></div><div class=""><div class="n">+$2,17<small>/мес</small></div><div class="t">остаётся с платящего базы на пилоте — уже за вычетом сервера</div></div><div class=""><div class="n">+$9,21<small>/мес</small></div><div class="t">остаётся с платящего Про на пилоте</div></div><div class="Go"><div class="n">2%</div><div class="t">попробовавших должны купить, чтобы бесплатный пробник окупился</div></div><div class="Go"><div class="n">$33K</div><div class="t">выручка за первый год на всех 20K — базовый сценарий</div></div></div>
+  <div class="cl">Конкуренты берут в месяц: Rudy <b>$4,99</b> · Hakko <b>$9,99</b> · Sidekick <b>~$10</b> · Questie <b>$19,99</b>. Наша база — <b>$6</b>.</div>
+</section>
+
+<section id="s2" class="s" data-t="Конкуренты">
+  <div class="k">Конкуренты</div>
+  <h2>Компаньоны уже продаются. <em>Про твой Steam не говорит никто</em></h2>
+  <table class="bt bt-s"><tr><th style="width:13%">кто</th><th style="width:33%">что делает</th><th style="width:20%">масштаб</th><th class="n1" style="width:13%">цена в месяц</th><th style="width:21%">слабое место</th></tr>
+<tr><td><b>Hakko</b></td><td>персонаж-компаньон: видит экран, сам комментирует, звонок голосом</td><td>1,8 млн установок, Android</td><td class="n1">$9,99–19,99</td><td>не знает Steam; ругают за кредиты</td></tr><tr><td><b>N.E.K.O.</b></td><td>бесплатный голосовой питомец на ПК, говорит по-русски</td><td>Steam: 513 отзывов, 90% хороших</td><td class="n1">бесплатно</td><td>«болтает без остановки»</td></tr><tr><td><b>Questie</b></td><td>ИИ-напарник для игр: голос, экран, свой голос</td><td>5 тыс.+ установок</td><td class="n1">$19,99–149,99</td><td>каждая реплика стоит кредит</td></tr><tr><td><b>Sidekick AI</b></td><td>голосовой помощник в игре, видит экран</td><td>Steam: 22 отзыва</td><td class="n1">~$10</td><td>из России не работает</td></tr><tr><td><b>OP.GG Agent</b></td><td>советы в LoL по данным матча, голоса стримеров</td><td>5 млн+ установок</td><td class="n1">0 / $19,99</td><td>только свои игры</td></tr><tr><td><b>Rudy</b></td><td>голосовой компаньон, видит окно игры</td><td>—</td><td class="n1">$4,99–9,99</td><td>30–90 мин в месяц</td></tr><tr><td><b>«Гена»</b></td><td>мод: персонаж ходит и действует в игре</td><td>ролики до 129 тыс. просмотров</td><td class="n1">мод</td><td>ответ через 3–6 с</td></tr>
+  <tr class="pk"><td><b>Мы</b></td><td>голос по-русски, смотрит экран, знает часы, ачивки и вишлист Steam</td><td>20K игроков в день в SB</td><td class="n1">499 / 1 490 ₽</td><td>спрос не проверен — меряет пилот</td></tr>
+  </table>
+  <div class="cl">Закрылись: <b>Backseat AI</b> — серверы стоили дороже выручки; <b>BSide</b> от miHoYo — через 28 дней.</div>
+</section>
+
+<section id="s3" class="s" data-t="Экономика платящего">
+  <div class="k">Сколько стоит один платящий</div>
+  <h2>Каждый платящий в плюсе на любом голосе — <em>даже когда сервер голоса делим всего на ~90 платящих пилота</em></h2>
+  <div class="w"><div class="tabs" id="t-econ"><button class=on data-p="a">Inworld — облако</button><button data-p="b">Терра — свой сервер, Про на Inworld</button><button data-p="c">VoxCPM2 — своя видеокарта</button></div><div class="pane on" data-tab="t-econ" data-p="a"><div class="vbar"><span class="vt">образцы голоса</span><span class="vg"><b>женский</b><button class="vp" data-src="audio/inworld/f1.mp3?v=1794473518" data-tip="О, ты снова в Доте! Вчера три катки подряд слил — сегодня отыграемся?">▶ 1</button><button class="vp" data-src="audio/inworld/f2.mp3?v=1794473519" data-tip="Стоп, это же редкая ачивка — её получили всего два процента игроков. Красава!">▶ 2</button><button class="vp" data-src="audio/inworld/f3.mp3?v=1794476352" data-tip="У тебя в вишлисте Хейдес Два, и сейчас на него скидка семьдесят процентов.">▶ 3</button><button class="vp" data-src="audio/inworld/f4.mp3?v=1794473520" data-tip="Слушай, ты в этом данже уже час. Может, перерыв и чай?">▶ 4</button></span><span class="vg"><b>мужской</b><button class="vp" data-src="audio/inworld/m1.mp3?v=1794473520" data-tip="О, ты снова в Доте! Вчера три катки подряд слил — сегодня отыграемся?">▶ 1</button><button class="vp" data-src="audio/inworld/m2.mp3?v=1794473521" data-tip="Стоп, это же редкая ачивка — её получили всего два процента игроков. Красава!">▶ 2</button><button class="vp" data-src="audio/inworld/m3.mp3?v=1794476234" data-tip="У тебя в вишлисте Хейдес Два, и сейчас на него скидка семьдесят процентов.">▶ 3</button><button class="vp" data-src="audio/inworld/m4.mp3?v=1794473522" data-tip="Слушай, ты в этом данже уже час. Может, перерыв и чай?">▶ 4</button></span><small>клон актёров открытого набора Dialogs</small></div><div style="margin-top:6px"><table class="bt bt-e"><tr><th style="width:56%">на одного платящего в месяц, на пилоте</th><th class="n1">база 499 ₽</th><th class="n1">Про 1 490 ₽</th></tr><tr><td>слушает и отвечает (ИИ)</td><td class="n1">$0,50</td><td class="n1">$1,00</td></tr><tr><td>смотрит экран</td><td class="n1">$1,86</td><td class="n1">$3,72</td></tr><tr><td>голос: Inworld берёт за каждое сказанное слово</td><td class="n1">$1,60</td><td class="n1">$3,20</td></tr><tr class="tot"><td>расход</td><td class="n1">$3,96</td><td class="n1">$7,92</td></tr><tr><td>платит игрок<small>минус 5% комиссии оплаты</small></td><td class="n1">$5,73</td><td class="n1">$17,12</td></tr><tr class="pk"><td><b>остаётся нам с одного платящего</b></td><td class="n1">+$1,78</td><td class="n1">+$9,21</td></tr></table></div></div><div class="pane" data-tab="t-econ" data-p="b"><div class="vbar"><span class="vt">образцы голоса</span><span class="vg"><b>женский</b><button class="vp" data-src="audio/terra/f1.mp3?v=1794481818" data-tip="О, ты снова в Доте! Вчера три катки подряд слил — сегодня отыграемся?">▶ 1</button><button class="vp" data-src="audio/terra/f2.mp3?v=1794481818" data-tip="Стоп, это же редкая ачивка — её получили всего два процента игроков. Красава!">▶ 2</button><button class="vp" data-src="audio/terra/f3.mp3?v=1794481818" data-tip="У тебя в вишлисте Хейдес Два, и сейчас на него скидка семьдесят процентов.">▶ 3</button><button class="vp" data-src="audio/terra/f4.mp3?v=1794481818" data-tip="Слушай, ты в этом данже уже час. Может, перерыв и чай?">▶ 4</button></span><span class="vg"><b>мужской</b><button class="vp" data-src="audio/terra/m1.mp3?v=1794481819" data-tip="О, ты снова в Доте! Вчера три катки подряд слил — сегодня отыграемся?">▶ 1</button><button class="vp" data-src="audio/terra/m2.mp3?v=1794481819" data-tip="Стоп, это же редкая ачивка — её получили всего два процента игроков. Красава!">▶ 2</button><button class="vp" data-src="audio/terra/m3.mp3?v=1794481819" data-tip="У тебя в вишлисте Хейдес Два, и сейчас на него скидка семьдесят процентов.">▶ 3</button><button class="vp" data-src="audio/terra/m4.mp3?v=1794481819" data-tip="Слушай, ты в этом данже уже час. Может, перерыв и чай?">▶ 4</button></span><small>готовые голоса Терры</small></div><div style="margin-top:6px"><table class="bt bt-e"><tr><th style="width:56%">на одного платящего в месяц, на пилоте</th><th class="n1">база 499 ₽</th><th class="n1">Про 1 490 ₽</th></tr><tr><td>слушает и отвечает (ИИ)</td><td class="n1">$0,50</td><td class="n1">$1,00</td></tr><tr><td>смотрит экран</td><td class="n1">$1,86</td><td class="n1">$3,72</td></tr><tr><td>голос: база — сервер Терры $87 на ~72 платящих, Про — Inworld</td><td class="n1">$1,21</td><td class="n1">$3,20</td></tr><tr class="tot"><td>расход</td><td class="n1">$3,57</td><td class="n1">$7,92</td></tr><tr><td>платит игрок<small>минус 5% комиссии оплаты</small></td><td class="n1">$5,73</td><td class="n1">$17,12</td></tr><tr class="pk"><td><b>остаётся нам с одного платящего</b></td><td class="n1">+$2,17</td><td class="n1">+$9,21</td></tr></table></div></div><div class="pane" data-tab="t-econ" data-p="c"><div class="vbar"><span class="vt">образцы голоса</span><span class="vg"><b>женский</b><button class="vp" data-src="audio/vox/f1.mp3?v=1794481612" data-tip="О, ты снова в Доте! Вчера три катки подряд слил — сегодня отыграемся?">▶ 1</button><button class="vp" data-src="audio/vox/f2.mp3?v=1794477186" data-tip="Стоп, это же редкая ачивка — её получили всего два процента игроков. Красава!">▶ 2</button><button class="vp" data-src="audio/vox/f3.mp3?v=1794479047" data-tip="У тебя в вишлисте Хейдес Два, и сейчас на него скидка семьдесят процентов.">▶ 3</button><button class="vp" data-src="audio/vox/f4.mp3?v=1794481612" data-tip="Слушай, ты в этом данже уже час. Может, перерыв и чай?">▶ 4</button></span><span class="vg"><b>мужской</b><button class="vp" data-src="audio/vox/m1.mp3?v=1794480285" data-tip="О, ты снова в Доте! Вчера три катки подряд слил — сегодня отыграемся?">▶ 1</button><button class="vp" data-src="audio/vox/m4.mp3?v=1794481612" data-tip="Слушай, ты в этом данже уже час. Может, перерыв и чай?">▶ 4</button></span><small>клон тех же актёров Dialogs</small></div><div style="margin-top:6px"><table class="bt bt-e"><tr><th style="width:56%">на одного платящего в месяц, на пилоте</th><th class="n1">база 499 ₽</th><th class="n1">Про 1 490 ₽</th></tr><tr><td>слушает и отвечает (ИИ)</td><td class="n1">$0,50</td><td class="n1">$1,00</td></tr><tr><td>смотрит экран</td><td class="n1">$1,86</td><td class="n1">$3,72</td></tr><tr><td>голос: видеокарта $248 в месяц на ~90 платящих</td><td class="n1">$2,76</td><td class="n1">$2,76</td></tr><tr class="tot"><td>расход</td><td class="n1">$5,12</td><td class="n1">$7,48</td></tr><tr><td>платит игрок<small>минус 5% комиссии оплаты</small></td><td class="n1">$5,73</td><td class="n1">$17,12</td></tr><tr class="pk"><td><b>остаётся нам с одного платящего</b></td><td class="n1">+$0,62</td><td class="n1">+$9,65</td></tr></table></div></div></div>
+</section>
+
+<section id="s4" class="s" data-t="Бесплатно — только пробник">
+  <div class="k">Бесплатно — только пробник</div>
+  <h2>Три вечера бесплатно. <em>Окупается, если купят 2% попробовавших</em></h2>
+  <div class="mg" style="grid-template-columns:repeat(4,1fr)"><div class="R"><div class="n">3 вечера</div><div class="t">по 2 ч игры и 30 мин разговора, один раз на аккаунт Steam</div></div><div class=""><div class="n">1-й вечер</div><div class="t">первая фраза — из его Steam: часы, редкая ачивка, вишлист</div></div><div class=""><div class="n">3-й вечер</div><div class="t">в конце — предложение купить; дальше питомец без голоса</div></div><div class="Go"><div class="n">4,8 мес</div><div class="t">столько в среднем платит подписчик ИИ-приложения</div></div></div>
+  <div style="height:22px"></div>
+  <table class="bt"><tr><th style="width:40%">голос</th><th class="n1">пробник стоит<br>на человека</th><th class="n1">платящий приносит<br>за 4,8 мес</th><th class="n1">окупается,<br>если купят</th></tr>
+  <tr><td><b>Inworld — облако</b></td><td class="n1">$0,70</td><td class="n1">$16</td><td class="n1" style="font-size:30px">4,4%</td></tr><tr class="pk"><td><b>Терра — свой сервер, Про на Inworld</b></td><td class="n1">$0,45</td><td class="n1">$22</td><td class="n1" style="font-size:30px">2%</td></tr><tr><td><b>VoxCPM2 — своя видеокарта</b></td><td class="n1">$0,45</td><td class="n1">$25</td><td class="n1" style="font-size:30px">1,8%</td></tr></table>
+</section>
+
+<section id="s5" class="s" data-t="Пилот">
+  <div class="k">Пилот на малой группе</div>
+  <h2>Пилот: 2 месяца, один сервер. <em>Меряем шесть чисел, от которых зависит бизнес</em></h2>
+  <div class="mg" style="grid-template-columns:repeat(4,1fr)"><div class="R"><div class="n">500–1 000</div><div class="t">новых попробовавших в месяц</div></div><div class=""><div class="n">2 мес</div><div class="t">месяц пробника и покупки, месяц — продление</div></div><div class="Go"><div class="n">$87</div><div class="t">сервер Терры в месяц — хватает до ~1 700 новых</div></div><div class=""><div class="n">300–500</div><div class="t">человек в группе; группы запускаем по очереди</div></div></div>
+  <div style="height:22px"></div>
+  <table class="bt"><tr><th style="width:38%">что меряем</th><th style="width:30%">ориентир сейчас</th><th>что это решает</th></tr>
+    <tr class="pk"><td><b>сколько покупают после пробника</b></td><td>окупается от 2%</td><td>есть ли бизнес</td></tr>
+    <tr><td><b>сколько берут Про</b></td><td>берём 20%</td><td>когда ставить свою видеокарту</td></tr>
+    <tr><td><b>сколько продлевают</b></td><td>79% — средний рынок</td><td>сколько платит один человек</td></tr>
+    <tr><td><b>сколько часов играют и говорят</b></td><td>берём 30 ч игры и 10 ч разговора</td><td>лимиты тарифов</td></tr>
+    <tr><td><b>сколько доходят до 3-го вечера</b></td><td>не знаем</td><td>сколько платящих дадут все 20K</td></tr>
+    <tr><td><b>сколько выключают и жалуются</b></td><td>у конкурентов главная жалоба — «болтает»</td><td>как часто питомец заговаривает сам и когда молчит</td></tr>
+  </table>
+</section>
+
+<section id="s6" class="s" data-t="Пилот: деньги">
+  <div class="k">Пилот: прибыль в месяц</div>
+  <h2>На пилоте берём Терру + Inworld для Про: <em>+$558 в месяц при 1 000 новых и 5% покупок</em></h2>
+  <table class="bt"><tr><th style="width:34%">прибыль в месяц, когда платящие накопились</th><th class="n1">500 новых в мес<br>купили 5%</th><th class="n1">500 новых в мес<br>купили 10%</th><th class="n1">1 000 новых в мес<br>купили 5%</th><th class="n1">1 000 новых в мес<br>купили 10%</th></tr>
+  <tr><td>платящих (из них Про)</td><td class="n1">120 (24)</td><td class="n1">240 (48)</td><td class="n1">240 (48)</td><td class="n1">481 (96)</td></tr>
+  <tr><td><b>Inworld — облако</b></td><td class="n1">+$83</td><td class="n1">+$501</td><td class="n1">+$166</td><td class="n1">+$1 002</td></tr><tr class="pk"><td><b>Терра — свой сервер, Про на Inworld</b></td><td class="n1">+$227</td><td class="n1">+$782</td><td class="n1">+$558</td><td class="n1">+$1 571</td></tr><tr><td><b>VoxCPM2 — своя видеокарта</b></td><td class="n1">+$151</td><td class="n1">+$774</td><td class="n1">+$551</td><td class="n1">+$1 797</td></tr></table>
+  <div style="height:22px"></div>
+  <div class="mg" style="grid-template-columns:repeat(3,1fr)"><div class="Go"><div class="n">−$87</div><div class="t">первый месяц: пробник оплачиваем сразу, а платящие ещё не накопились</div></div><div class=""><div class="n">$87</div><div class="t">сервер Терры держит пробник и базу до ~1 700 новых в месяц</div></div><div class="Li"><div class="n">~50 Про</div><div class="t">с этого числа платящих Про своя видеокарта выгоднее Inworld</div></div></div>
+</section>
+
+<section id="s7" class="s" data-t="После пилота: 20K">
+  <div class="k">После пилота — на все 20K</div>
+  <h2>На всех 20K: $33K выручки за год в базовом сценарии. <em>Решает, сколько купят после пробника</em></h2>
+  <div class="w g2" style="grid-template-columns:1.35fr 1fr">
+    <div class="c"><table style="font-size:17px">
+      <tr><th style="width:44%">что берём из пилота (пока допущения)</th><th class="n1">осторожный</th><th class="n1">базовый</th><th class="n1">хороший</th></tr>
+      <tr><td><b>попробовали в 1-й месяц</b></td><td class="n1">15% · 3 000</td><td class="n1">25% · 5 000</td><td class="n1">35% · 7 000</td></tr>
+      <tr><td><b>дальше новых в месяц</b></td><td class="n1">500</td><td class="n1">1 000</td><td class="n1">1 500</td></tr>
+      <tr class="pk"><td><b>купили после пробника</b></td><td class="n1">5%</td><td class="n1">7%</td><td class="n1">10%</td></tr>
+      <tr><td><b>доля Про · отток в месяц</b></td><td class="n1">15% · 25%</td><td class="n1">20% · 21%</td><td class="n1">25% · 15%</td></tr>
+      <tr><td><b>платящих: мес 1 → мес 12</b></td><td class="n1">150 → 102</td><td class="n1">350 → 338</td><td class="n1">700 → 950</td></tr>
+      <tr class="pk"><td><b>выручка за 12 мес</b></td><td class="n1">$10K</td><td class="n1">$33K</td><td class="n1">$88K</td></tr>
+      <tr class="pk"><td><b>прибыль за 12 мес: Терра + Inworld Про</b></td><td class="n1">+$918</td><td class="n1">+$9,8K</td><td class="n1">+$37,4K</td></tr>
+      <tr><td><b>прибыль: всё на VoxCPM2</b></td><td class="n1">−$187</td><td class="n1">+$10,9K</td><td class="n1">+$41,2K</td></tr>
+      <tr><td><b>прибыль: всё на Inworld</b></td><td class="n1">−$1,5K</td><td class="n1">+$3,7K</td><td class="n1">+$26,8K</td></tr>
+      <tr><td><b>прибыль в 1-й месяц</b></td><td class="n1">−$886</td><td class="n1">−$906</td><td class="n1">−$22</td></tr>
+    </table></div>
+    <div class="c"><h3 style="margin:0 0 6px;font-size:20px">Прибыль в месяц <span style="font-weight:400;font-size:17px">Терра + Inworld для Про</span></h3><svg viewBox="0 0 520 210" style="width:100%;height:auto"><line x1="40" x2="506" y1="148" y2="148" stroke="var(--c-plum)" stroke-width="1.5"/><text x="36" y="152" text-anchor="end" font-size="11" fill="var(--c-skin)">$0</text><polyline points="46,175 87,140 128,141 169,142 210,143 251,143 291,144 332,144 373,144 414,145 455,145 496,145" fill="none" stroke="var(--c-skin)" stroke-width="2.5"/><text x="500" y="139" text-anchor="end" font-size="15" fill="var(--c-skin)">осторожный +$118/мес</text><polyline points="46,176 87,118 128,118 169,118 210,119 251,119 291,119 332,119 373,119 414,119 455,119 496,119" fill="none" stroke="var(--c-rose)" stroke-width="2.5"/><text x="500" y="113" text-anchor="end" font-size="15" fill="var(--c-rose)">базовый +$959/мес</text><polyline points="46,149 87,62 128,58 169,53 210,49 251,45 291,42 332,40 373,37 414,36 455,35 496,34" fill="none" stroke="var(--c-gold)" stroke-width="2.5"/><text x="500" y="28" text-anchor="end" font-size="15" fill="var(--c-gold)">хороший +$3,7K/мес</text><text x="46" y="204" text-anchor="middle" font-size="14" fill="var(--c-skin)">мес 1</text><text x="251" y="204" text-anchor="middle" font-size="14" fill="var(--c-skin)">мес 6</text><text x="496" y="204" text-anchor="middle" font-size="14" fill="var(--c-skin)">мес 12</text></svg>
+      <div class="it" style="margin-top:8px">Прибыль<small>выручка минус ИИ, голос и серверы — до дележа с SB</small></div>
+      <div class="it">1-й месяц в минусе<small>волна: пробник получают тысячи сразу, а платят пока по одному разу</small></div>
+      <div class="it">Дальше ровно<small>новые покупатели восполняют отток; базовый — +$959 в месяц, 338 платящих</small></div></div>
+  </div>
+</section>
+
+<section id="s8" class="s" data-t="План MVP">
+  <div class="k">План MVP</div>
+  <h2>Сразу делаем голос, экран и пробник. <em>Цифры меряем сами на пилоте</em></h2>
+  <div class="w g2" style="grid-template-columns:1fr 2.2fr">
+    <div class="c Ho lane"><h3>0 <span>первые 1–2 дня</span></h3><div class="pr" style="background:var(--c-ink)"></div>
+      <div class="it">Интеграция с SB<small>понять, какие разрешения можем взять у SteamBooster: микрофон, экран, данные Steam</small></div>
+      <div class="it">Сборка плагина<small>микрофон, кадр экрана, оверлей Shift+Tab</small></div></div>
+    <div class="c"><table>
+      <tr><th style="width:4%">#</th><th style="width:42%">фича</th><th class="n1" style="width:18%">$ на платящего в месяц</th><th style="padding-left:20px">тариф</th></tr>
+      <tr class="pk"><td>1</td><td><b>Голос по-русски</b>: нажми и говори, имя питомца как слово-пробуждение</td><td class="n1">$0,50</td><td style="padding-left:20px">платно, пробник</td></tr>
+      <tr class="pk"><td>2</td><td><b>Смотрит экран раз в 15 с</b>, застывший пропускает, до 30 ч в месяц (в Про 60 ч), сам комментирует; дальше — «посмотри» по кнопке</td><td class="n1">$1,86</td><td style="padding-left:20px">платно, пробник</td></tr>
+      <tr><td>3</td><td><b>Знает Steam</b>: часы, ачивки, бэклог, вишлист — в разговоре</td><td class="n1">$0</td><td style="padding-left:20px">в голосе</td></tr>
+      <tr><td>4</td><td><b>Память о прошлых вечерах</b> — «она помнит»</td><td class="n1">~$0,14</td><td style="padding-left:20px">в голосе; в работе</td></tr>
+      <tr><td>5</td><td><b>Пробник на 3 вечера и подписка через СБП</b> в кассе SB</td><td class="n1">—</td><td style="padding-left:20px">один раз на SteamID</td></tr>
+      <tr class="pk"><td>6</td><td><b>Два голоса на старте — женский и мужской</b>: учим на открытых студийных записях с коммерческой лицензией (Dialogs, M-AILABS)</td><td class="n1">~$1 на обучение</td><td style="padding-left:20px">база и пробник</td></tr>
+      <tr><td>7</td><td><b>Про: выбор голоса и свой голос по образцу</b> — Inworld на пилоте, VoxCPM2 наготове</td><td class="n1">+$3,20</td><td style="padding-left:20px">Про 1 490 ₽</td></tr>
+    </table></div>
+  </div>
+  <div class="w" style="grid-template-columns:repeat(4,1fr);margin-top:0">
+    <div class="c Go"><div class="l">1</div><h4>Сборка плагина</h4><div class="m">микрофон, кадр экрана, оверлей — 1–2 дня</div></div>
+    <div class="c R"><div class="l">2</div><h4>Голос и экран</h4><div class="m">фичи 1–4 — до пилота</div></div>
+    <div class="c R"><div class="l">3</div><h4>Пробник и оплата</h4><div class="m">фичи 5–7, пилот на 500–1 000 новых в месяц</div></div>
+    <div class="c Li"><div class="l">4 · после пилота</div><h4>Реакции на события</h4><div class="m">ачивки, друзья, смерть в CS2 и Dota 2 — пока не решили, как делать надёжно</div></div>
+  </div>
+  <div class="w" style="grid-template-columns:auto 1fr;margin-top:18px;align-items:center;gap:14px"><span class="tag p">не на старт</span><span class="t2">хук в процесс игры (античит) · речь в речь в базовом тарифе · клон чужого голоса без согласия · Party Mode и выбор из 25 моделей</span></div>
+</section>
+
+<section id="s9" class="s" data-t="Послушать">
+  <div class="k">Как звучат</div>
+  <h2>Живые записи, <em>без монтажа там, где он был</em></h2>
+  <div class="w" style="grid-template-columns:repeat(4,1fr)">
+    <div class="c au R"><div class="l">«Гена» · стрим</div><h4>«Что ты видишь на экране?»</h4><div class="m">честная пауза 3,3–3,4 с</div><audio controls preload="none" src="a/gena-stream-real-latency.m4a"></audio></div>
+    <div class="c au"><div class="l">«Гена» · ролик</div><h4>«Тролля нет» — а он есть</h4><div class="m">ошибка зрения на мелком кадре</div><audio controls preload="none" src="a/gena-valheim-troll-denial.m4a"></audio></div>
+    <div class="c au"><div class="l">Gemini Live</div><h4>«Лёха»-механик</h4><div class="m">роль задана голосом, видит экран</div><audio controls preload="none" src="a/gemini-live-lyokha-mechanic.m4a"></audio></div>
+    <div class="c au"><div class="l">Gemini Live · CS2</div><h4>Учит раскидке на Dust 2</h4><div class="m">советчик без тела</div><audio controls preload="none" src="a/gemini-cs2-smoke-dust2.m4a"></audio></div>
+    <div class="c au"><div class="l">Hakko</div><h4>Грубый персонаж в Overwatch</h4><div class="m">живая игра обзорщика</div><audio controls preload="none" src="a/hakko-user2-overwatch-toxic.m4a"></audio></div>
+    <div class="c au"><div class="l">Hakko</div><h4>Игрок просит помолчать</h4><div class="m">болтливость по умолчанию 5 из 5</div><audio controls preload="none" src="a/hakko-user-catgirl-told-to-be-quiet.m4a"></audio></div>
+    <div class="c au"><div class="l">PUBG Ally</div><h4>Напарник в PUBG</h4><div class="m">демо NVIDIA, всё на ПК игрока</div><audio controls preload="none" src="a/pubg-ally-demo.m4a"></audio></div>
+    <div class="c au"><div class="l">Questie · промо</div><h4>Персонаж-гном</h4><div class="m">реклама, паузы вырезаны</div><audio controls preload="none" src="a/questie-promo-dwarf.m4a"></audio></div>
+  </div>
+</section>
+
+<section id="s10" class="s" data-t="Риски">
+  <div class="k">Риски</div>
+  <h2>Что уже случилось <em>у конкурентов</em></h2>
+  <div class="w"><div class="c"><table>
+    <tr><th style="width:24%">риск</th><th style="width:33%">у кого</th><th>что делаем мы</th></tr>
+    <tr><td><b>Сервер дороже выручки</b></td><td>ResoAI ($30–35 на $5), Backseat закрыт</td><td>бесплатно только пробник; серверы поднимаем по нагрузке, без годовых контрактов; лимит часов в тарифе; Про 1 490 ₽</td></tr>
+    <tr class="pk"><td><b>Плохая реплика бьёт по SB</b></td><td>Hakko — «AI has no clue»; «Гена» врёт про экран; у нас на WoW выдумок 9–14%</td><td>пилот на малой группе; выключить и «помолчи» в один клик; выдумки меряем до расширения</td></tr>
+    <tr><td><b>Болтает без остановки</b></td><td>N.E.K.O. #2756; Hakko — болтливость 5 из 5</td><td>по умолчанию тихо; «помолчи»; реже, если игрок не отвечает</td></tr>
+    <tr><td><b>Врёт про экран</b></td><td>Hakko, «Гена», наш замер: тёмный кадр смерти → «световая граната»</td><td>данные Steam и игры вместо картинки; на неясном кадре — признать, что не видит</td></tr>
+    <tr><td><b>Ненавистная оплата</b></td><td>Hakko — кредит за сообщение; Questie — за автоответ</td><td>подписка без кредитов за сообщение; тишина и реплики по экрану не списываются</td></tr>
+    <tr><td><b>Тяжёлый хвост</b></td><td>у N.E.K.O. 10% наиграли больше 375 ч</td><td>дневной потолок часов зрения и разговора</td></tr>
+    <tr><td><b>Не работает из РФ</b></td><td>Sidekick; Gemini не обслуживает РФ</td><td>сервер вне РФ для Gemini или своя модель в РФ; оплата СБП</td></tr>
+    <tr><td><b>Античит и баны</b></td><td>у N.E.K.O. агент с мышью ловил Kaspersky</td><td>без хуков в игру и без управления мышью</td></tr>
+    <tr><td><b>Живёт дни</b></td><td>BSide — 28 дней</td><td>память о прошлых вечерах (в работе) и бэклог Steam как повод вернуться</td></tr>
+  </table></div></div>
+</section>
+
+<section id="s11" class="s" data-t="Дальше">
+  <div class="k">Дальше</div>
+  <h2>Дальше решаем, <em>как выглядит питомец и какие у него фичи тамагочи</em></h2>
+  <div class="mg" style="grid-template-columns:repeat(2,1fr)"><div class="R"><div class="n">Как выглядит</div><div class="t">персонаж или простой «кружок», где живёт на экране</div></div><div class="Li"><div class="n">Фичи тамагочи</div><div class="t">что у питомца растёт и меняется от вечера к вечеру</div></div></div>
+</section>
+
+
+</div>
+<script>
+const st=document.getElementById('stage'),S=[...document.querySelectorAll('.s')],bar=document.getElementById('bar'),tip=document.getElementById('tip');
+function fit(){st.style.zoom=innerWidth/1600}
+addEventListener('resize',fit);fit();
+S.forEach((x,i)=>{x.querySelector('.k').dataset.n=String(i+1).padStart(2,'0')});
+const pan=document.getElementById('pan'),num=document.getElementById('num'),pt=document.getElementById('pt'),PC=['#7c9ac8','#dcbf93','#c0a3de','#f9edee'];
+let lastS=S[0];
+function onS(){const hit=document.elementFromPoint(innerWidth*.4,innerHeight*.45);let on=hit&&hit.closest('.s');if(on)lastS=on;else on=lastS;
+ const ix=S.indexOf(on);pan.style.background=PC[ix%PC.length];num.textContent=String(ix+1).padStart(2,'0');pt.textContent=on.dataset.t||'';
+ const h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%'}
+addEventListener('scroll',onS,{passive:true});addEventListener('load',()=>{const n=+location.hash.slice(1);if(n&&S[n-1]){const a=document.getElementById('apx');if(a&&a.contains(S[n-1]))a.hidden=false;S[n-1].scrollIntoView()}onS()});onS();
+addEventListener('mousemove',e=>{const t=e.target.closest&&e.target.closest('[data-tip]');if(!t){tip.style.display='none';return}tip.textContent=t.dataset.tip;tip.style.display='block';tip.style.left=e.clientX+14+'px';tip.style.top=e.clientY-30+'px'});
+document.querySelectorAll('audio').forEach(a=>a.addEventListener('play',()=>document.querySelectorAll('audio').forEach(b=>{if(b!==a)b.pause()})));
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{const t=b.parentNode.id;
+ b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+ document.querySelectorAll('.pane[data-tab="'+t+'"]').forEach(p=>p.classList.toggle('on',p.dataset.p===b.dataset.p))}));
+let vpA=null,vpB=null;document.querySelectorAll('.vp').forEach(b=>b.addEventListener('click',()=>{if(vpB===b&&vpA&&!vpA.paused){vpA.pause();b.classList.remove('on');return}if(vpA)vpA.pause();if(vpB)vpB.classList.remove('on');vpA=new Audio(b.dataset.src);vpB=b;b.classList.add('on');vpA.onended=()=>b.classList.remove('on');vpA.play()}));</script>
+</body></html>
